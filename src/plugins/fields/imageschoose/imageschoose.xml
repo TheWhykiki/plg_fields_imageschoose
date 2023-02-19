@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<extension type="plugin" version="3.7.0" group="fields" method="upgrade">
+    <name>plg_fields_imageschoose</name>
+    <author>Whykiki</author>
+    <creationDate>##DATE##</creationDate>
+    <authorEmail>info@whykiki.de</authorEmail>
+    <authorUrl>whykiki.de</authorUrl>
+    <version>##VERSION##</version>
+    <description>PLG_IMAGESCHOOSE_XML_DESCRIPTION</description>
+    <files>
+        ##FILES##
+    </files>
+
+    <media destination="plg_fields_imageschoose" folder="media/plg_fields_imageschoose">
+        ##MEDIA_FILES##
+    </media>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+
+                <field name="styling"
+                       type="styling"
+                       disabled="true"
+                       hidden="true"
+                />
+
+                <field name="thumbnails"
+                       type="radio"
+                       class="btn-group"
+                       default="0"
+                       label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_THUMB_LABEL"
+                       description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_THUMB_DESC"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field name="thumb_width"
+                       type="text"
+                       default="320px"
+                       label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_THUMBWITH_LABEL"
+                       description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_THUMBWITH_DESC"
+                       showon="thumbnails:1"
+                />
+
+                <field name="thumb_height"
+                       type="text"
+                       default="240px"
+                       label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_THUMBHEIGHT_LABEL"
+                       description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_HUMBHEIGHT_DESC"
+                       showon="thumbnails:1"
+                />
+
+                <field
+                        name="templateFramework"
+                        type="list"
+                        label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_TEMPLATEFRAMEWORK_LABEL"
+                        description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_TEMPLATEFRAMEWORK_DESC"
+                        class="btn-group"
+                        default="raw"
+                >
+                    <option value="raw">PLG_FIELDS_IMAGESCHOOSE_PARAMS_TEMPLATEFRAMEWORK_OPTION1</option>
+                    <option value="bs2">PLG_FIELDS_IMAGESCHOOSE_PARAMS_TEMPLATEFRAMEWORK_OPTION2</option>
+                    <option value="bs3">PLG_FIELDS_IMAGESCHOOSE_PARAMS_TEMPLATEFRAMEWORK_OPTION3</option>
+                    <option value="bs4">PLG_FIELDS_IMAGESCHOOSE_PARAMS_TEMPLATEFRAMEWORK_OPTION4</option>
+                    <option value="uikit2">PLG_FIELDS_IMAGESCHOOSE_PARAMS_TEMPLATEFRAMEWORK_OPTION5</option>
+                    <option value="uikit3">PLG_FIELDS_IMAGESCHOOSE_PARAMS_TEMPLATEFRAMEWORK_OPTION6</option>
+                    <!--<option value="bs4">Joomla 4 (Bootstrap 4)</option>-->
+                </field>
+
+                <field name="items_x_line"
+                       type="subform"
+                       formsource="plugins/fields/imageschoose/xml/items_x_line.xml"
+                       min="1"
+                       label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_ITEMS_X_LINE_LABEL"
+                       description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_ITEMS_X_LINE_DESC"
+                       showon="templateFramework!:bs2,uikit3,raw"
+                />
+
+                <field name="items_x_line_uikit3"
+                       type="subform"
+                       formsource="plugins/fields/imageschoose/xml/items_x_line_uikit3.xml"
+                       min="1"
+                       label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_ITEMS_X_LINE_LABEL"
+                       description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_ITEMS_X_LINE_DESC"
+                       showon="templateFramework:uikit3"
+                />
+
+                <field name="items_x_line_m"
+                       type="integer"
+                       default="3"
+                       first="1"
+                       last="6"
+                       step="1"
+                       label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_ITEMS_X_LINE_LABEL"
+                       description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_ITEMS_X_LINE_M_DESC"
+                       showon="templateFramework:bs2"
+                />
+
+                <field name="gutter"
+                       type="radio"
+                       class="btn-group"
+                       default="medium"
+                       label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_GUTTER_LABEL"
+                       description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_GUTTER_DESC"
+                       showon="templateFramework!:bs2,bs3,raw"
+                >
+                    <option value="collapse">PLG_FIELDS_IMAGESCHOOSE_PARAMS_GUTTER_NONE</option>
+                    <option value="small">PLG_FIELDS_IMAGESCHOOSE_PARAMS_GUTTER_SMALL</option>
+                    <option value="medium">PLG_FIELDS_IMAGESCHOOSE_PARAMS_GUTTER_MEDIUM</option>
+                    <option value="large">PLG_FIELDS_IMAGESCHOOSE_PARAMS_GUTTER_LARGE</option>
+                </field>
+
+                <field name="gutter_bs"
+                       type="radio"
+                       class="btn-group"
+                       default="medium"
+                       label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_GUTTER_LABEL"
+                       description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_GUTTER_DESC"
+                       showon="templateFramework:bs2,bs3"
+                >
+                    <option value="collapse">PLG_FIELDS_IMAGESCHOOSE_PARAMS_GUTTER_NONE</option>
+                    <option value="medium">PLG_FIELDS_IMAGESCHOOSE_PARAMS_GUTTER_DEFAULT</option>
+                </field>
+
+                <field name="image_layout"
+                       type="radio"
+                       default="thumbnail"
+                       class="btn-group"
+                       label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_IMAGE_LAYOUT_LABEL"
+                       description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_IMAGE_LAYOUT_DESC"
+                       showon="templateFramework!:uikit3,raw"
+                >
+                    <option value="none">PLG_FIELDS_IMAGESCHOOSE_PARAMS_IMAGE_LAYOUT_OPTION_ONLY_PICTURE</option>
+                    <option value="rounded">PLG_FIELDS_IMAGESCHOOSE_PARAMS_IMAGE_LAYOUT_OPTION_ROUNDED</option>
+                    <option value="circle">PLG_FIELDS_IMAGESCHOOSE_PARAMS_IMAGE_LAYOUT_OPTION_CIRCLE</option>
+                    <option value="thumbnail">PLG_FIELDS_IMAGESCHOOSE_PARAMS_IMAGE_LAYOUT_OPTION_POLAROID</option>
+                </field>
+
+                <field name="image_layout_uikit3"
+                       type="radio"
+                       default="none"
+                       class="btn-group"
+                       label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_IMAGE_LAYOUT_LABEL"
+                       description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_IMAGE_LAYOUT_DESC"
+                       showon="templateFramework:uikit3"
+                >
+                    <option value="none">PLG_FIELDS_IMAGESCHOOSE_PARAMS_IMAGE_LAYOUT_OPTION_ONLY_PICTURE</option>
+                    <option value="rounded">PLG_FIELDS_IMAGESCHOOSE_PARAMS_IMAGE_LAYOUT_OPTION_ROUNDED</option>
+                    <option value="circle">PLG_FIELDS_IMAGESCHOOSE_PARAMS_IMAGE_LAYOUT_OPTION_CIRCLE</option>
+                    <option value="card">PLG_FIELDS_IMAGESCHOOSE_PARAMS_IMAGE_LAYOUT_OPTION_CARD</option>
+                </field>
+
+                <field name="caption_overlay"
+                       type="radio"
+                       default="none"
+                       class="btn-group"
+                       label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_CAPTION_OVERLAY_LABEL"
+                       description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_CAPTION_OVERLAY_DESC"
+                       showon="templateFramework!:raw"
+                >
+                    <option value="none">JOFF</option>
+                    <option value="caption">Caption</option>
+                    <option value="overlay">Overlay</option>
+                </field>
+
+                <field name="caption_type"
+                       type="radio"
+                       default="copyright"
+                       class="btn-group"
+                       label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_CAPTION_TYPE_LABEL"
+                       description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_CAPTION_TYPE_DESC"
+                       showon="caption_overlay!:none"
+                >
+                    <option value="copyright">Copyright</option>
+                    <option value="full">Full</option>
+                </field>
+
+            </fieldset>
+
+            <fieldset name="advanced">
+                <field name="debug"
+                       type="radio"
+                       class="btn-group"
+                       default="0"
+                       label="Debug"
+                       description=""
+                >
+                    <option value="0">JOFF</option>
+                    <option value="1">JON</option>
+                </field>
+            </fieldset>
+
+        </fields>
+    </config>
+</extension>
+
+
+

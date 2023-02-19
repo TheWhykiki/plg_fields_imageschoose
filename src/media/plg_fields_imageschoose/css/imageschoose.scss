@@ -1,0 +1,136 @@
+.modal-body{
+  overflow-y: scroll;
+  height: 500px;
+
+}
+iframe{
+  height: 100%;
+}
+
+/*** Neu ****/
+
+.imagesPreviewList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+    background-image: linear-gradient(45deg, #CCC 25%, transparent 25%), linear-gradient(-45deg, #CCC 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #CCC 75%), linear-gradient(-45deg, transparent 75%, #CCC 75%);
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+    background-size: 40px 40px;
+    padding: 15px;
+
+    li {
+        text-align: center;
+        display: inline-block;
+        list-style: none;
+        position: relative;
+        border: solid 12px #fff;
+        background: #fff;
+        box-shadow: 0 0 15px 0px #555;
+        transition: all 1s ease;
+        -o-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -webkit-transition: all 1s ease;
+        cursor: pointer;
+
+        img {
+          display: block;
+          max-width: 100%;
+          width: 100%;
+          height: auto;
+          pointer-events: none !important;
+        }
+        .remove-btn{
+          background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+          background-image: linear-gradient(top, #f4f1ee, #fff);
+          border-radius: 50%;
+          box-shadow: 0px 4px 5px 0px rgb(0 0 0 / 30%), inset 0px 2px 1px 1px white, inset 0px -2px 1px 1px rgb(204 198 197 / 50%);
+          height: 40px;
+          width: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          -webkit-transition: all 0.1s linear;
+          transition: all 0.1s linear;
+          outline: none;
+          border: none;
+          opacity: 0;
+        }
+
+        .remove-btn:after{
+          color:#e9e6e4;
+          display: block;
+          height: 20px;
+          width: 20px;
+          text-decoration: none;
+          text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+          position: absolute;
+          content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M144 0L128 32H0V96H448V32H320L304 0H144zM416 128H32L56 512H392l24-384z'/%3E%3C/svg%3E");
+
+          &:hover{
+            background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+            background-image: linear-gradient(top, #fff, #f4f1ee);
+            color:#0088cc;
+          }
+
+          &:hover:after{
+            color:#0088cc;
+            text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
+          }
+
+          &:active{
+            background-image: -webkit-linear-gradient(top, #efedec, #f7f4f4);
+            background-image: linear-gradient(top, #efedec, #f7f4f4);
+            box-shadow: 0 3px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+          }
+
+          &:active:after{
+            color:#dbd2d2;
+            text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
+          }
+        }
+
+        &:hover {
+          top: 0px;
+          opacity: 1;
+          transform: translateY(-5px);
+          box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+            .remove-btn {
+              opacity: 1;
+            }
+        }
+
+        &:not(:hover) {
+          opacity: 0.8;
+        }
+    }
+}
+
+.imageChooseModalButton, .hinweis{
+  margin: 20px auto;
+  display: block;
+  text-align: center;
+}
+
+li.dragging {
+  opacity: 1;
+  transform: rotate(5deg);
+}
+
+.light {
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 700px;
+  height: 700px;
+  background: #fff;
+  filter: blur(100px);
+  opacity: 0.3;
+  pointer-events: none;
+}
