@@ -1,10 +1,10 @@
 <?php
 /**
  * @package      Joomla.Plugin
- * @subpackage   Fields.Jtgallery
+ * @subpackage   Fields.Imageschoose
  *
- * @author       Barbara Assmann, Guido De Gobbis
- * @copyright    (c) JoomTools.de - All rights reserved.
+ * @author       Whykiki <info@whykiki.de>
+ * @copyright    2023 wir-lieben-webdesign.de - All rights reserved.
  * @license      GNU General Public License version 3 or later
  */
 

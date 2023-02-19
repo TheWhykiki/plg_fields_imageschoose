@@ -1,10 +1,11 @@
 <?php
 /**
- * @package     Joomla.Plugin
- * @subpackage  Fields.Text
+ * @package      Joomla.Plugin
+ * @subpackage   Fields.Imageschoose
  *
- * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @author       Whykiki <info@whykiki.de>
+ * @copyright    2023 wir-lieben-webdesign.de - All rights reserved.
+ * @license      GNU General Public License version 3 or later
  */
 
 use Joomla\CMS\Factory;

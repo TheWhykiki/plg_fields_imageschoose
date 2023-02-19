@@ -1,5 +1,11 @@
-.show-grid [class*="span"],
-.show-grid [class*="col-"] {
+/**
+ * @package      Joomla.Plugin
+ * @subpackage   Fields.Imageschoose
+ *
+ * @author       Whykiki <info@whykiki.de>
+ * @copyright    2023 wir-lieben-webdesign.de - All rights reserved.
+ * @license      GNU General Public License version 3 or later
+ */
 	margin-bottom: 1em;
 }
 

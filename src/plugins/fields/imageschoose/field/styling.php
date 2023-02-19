@@ -1,11 +1,13 @@
 <?php
+/**
+ * @package      Joomla.Plugin
+ * @subpackage   Fields.Imageschoose
+ *
+ * @author       Whykiki <info@whykiki.de>
+ * @copyright    2023 wir-lieben-webdesign.de - All rights reserved.
+ * @license      GNU General Public License version 3 or later
+ */
 	
-	/**
-	 * Joomla! Content Management System
-	 *
-	 * @copyright  (C) 2009 Open Source Matters, Inc. <https://www.joomla.org>
-	 * @license    GNU General Public License version 2 or later; see LICENSE.txt
-	 */
 	
 	
 

@@ -1,1 +1,8 @@
-.show-grid [class*="span"],.show-grid [class*="col-"]{margin-bottom:1em}.no-gutters{margin-left:0 !important;margin-right:0 !important}.no-gutters [class*="span"],.no-gutters [class*="col-"]{padding-left:0 !important;padding-right:0 !important;margin-bottom:0 !important;margin-left:0 !important;margin-right:0 !important}
+/**
+ * @package      Joomla.Plugin
+ * @subpackage   Fields.Imageschoose
+ *
+ * @author       Whykiki <info@whykiki.de>
+ * @copyright    2023 wir-lieben-webdesign.de - All rights reserved.
+ * @license      GNU General Public License version 3 or later
+ */

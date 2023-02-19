@@ -1,8 +1,10 @@
-/*!
- * baguetteBox.js
- * @author  feimosi
- * @version 1.11.0
- * @url https://github.com/feimosi/baguetteBox.js
+/**
+ * @package      Joomla.Plugin
+ * @subpackage   Fields.Imageschoose
+ *
+ * @author       Whykiki <info@whykiki.de>
+ * @copyright    2023 wir-lieben-webdesign.de - All rights reserved.
+ * @license      GNU General Public License version 3 or later
  */
 #baguetteBox-overlay {
 	display: none;

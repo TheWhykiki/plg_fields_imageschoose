@@ -1,11 +1,12 @@
 <?php
-	/**
-	 * @package     Joomla.Plugin
-	 * @subpackage  Fields.Osmap
-	 *
-	 * @copyright   Copyright (C) 2017 NAME. All rights reserved.
-	 * @license     GNU General Public License version 2 or later; see LICENSE.txt
-	 */
+/**
+ * @package      Joomla.Plugin
+ * @subpackage   Fields.Imageschoose
+ *
+ * @author       Whykiki <info@whykiki.de>
+ * @copyright    2023 wir-lieben-webdesign.de - All rights reserved.
+ * @license      GNU General Public License version 3 or later
+ */
 	
 	use Joomla\CMS\HTML\HTMLHelper;
 	use Joomla\CMS\Language\Text;
