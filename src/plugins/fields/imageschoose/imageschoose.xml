@@ -170,11 +170,32 @@
                        default="copyright"
                        class="btn-group"
                        label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_CAPTION_TYPE_LABEL"
-                       description="PLG_FIELDS_IMAGESCHOOSE_PARAMS_CAPTION_TYPE_DESC"
+                       desc="PLG_FIELDS_IMAGESCHOOSE_PARAMS_CAPTION_TYPE_DESC"
                        showon="caption_overlay!:none"
                 >
                     <option value="copyright">Copyright</option>
                     <option value="full">Full</option>
+                </field>
+
+                <field
+                        name="caption_data"
+                        type="list"
+                        label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_CAPTION_DATA_LABEL"
+                        desc="PLG_FIELDS_IMAGESCHOOSE_PARAMS_CAPTION_DATA_DESC"
+                        multiple="true"
+                        layout="joomla.form.field.list-fancy-select"
+                        validate="options"
+                        showon="caption_type:full"
+                >
+                    <option value="fileName">PLG_FIELDS_IMAGESCHOOSE_CAPTION_LABEL_FILENAME</option>
+                    <option value="fileExt">PLG_FIELDS_IMAGESCHOOSE_CAPTION_LABEL_FILEEXT</option>
+                    <option value="fileAuthor">PLG_FIELDS_IMAGESCHOOSE_CAPTION_LABEL_FILEAUTHOR</option>
+                    <option value="fileTitle">PLG_FIELDS_IMAGESCHOOSE_CAPTION_LABEL_FILETITLE</option>
+                    <option value="fileDescription">PLG_FIELDS_IMAGESCHOOSE_CAPTION_LABEL_FILEDESCRIPTION</option>
+                    <option value="fileDate">PLG_FIELDS_IMAGESCHOOSE_CAPTION_LABEL_FILEDATE</option>
+                    <option value="fileYear">PLG_FIELDS_IMAGESCHOOSE_CAPTION_LABEL_FILEYEAR</option>
+                    <option value="fileSize">PLG_FIELDS_IMAGESCHOOSE_CAPTION_LABEL_FILESIZE</option>
+                    <option value="copyrightAuthor">PLG_FIELDS_IMAGESCHOOSE_CAPTION_LABEL_COPYRIGHTAUTHOR</option>
                 </field>
 
             </fieldset>
@@ -194,6 +215,10 @@
 
         </fields>
     </config>
+
+    <updateservers>
+        <server type="extension" priority="1" name="plg_fields_imageschoose">https://raw.githubusercontent.com/TheWhykiki/plg_fields_imageschoose/master/update.xml</server>
+    </updateservers>
 </extension>
 
 

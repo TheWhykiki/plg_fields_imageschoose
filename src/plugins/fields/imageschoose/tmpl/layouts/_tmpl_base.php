@@ -42,7 +42,7 @@ $imgCounter = 1;
 	<<?php echo $imgContainer; ?> class="<?php echo $imgWidth; ?>">
 	<?php
 
-	$imgObject = PlgFieldsImageschooseHelper::getImgObject($imagesPath, $image, $captionOverlay);
+	$imgObject = PlgFieldsImageschooseHelper::getImgObject($imagesPath, $image);
 
 	if (empty($imgObject->fileName))
 	{

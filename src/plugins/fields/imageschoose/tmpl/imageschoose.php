@@ -28,6 +28,9 @@ $params = $this->params;
 
 $templateFramework   = (string) $params->get('templateFramework', 'raw');
 $captionType =	(string) $params->get('caption_type', 'none');
+$captionData =	$params->get('caption_data');
+	
+PlgFieldsImageschooseHelper::helperInit($captionType, $captionData);
 
 $value = $field->value;
 
@@ -55,7 +58,7 @@ if (in_array($templateFramework, array('bs2', 'bs3', 'bs4','uikit2', 'uikit3'), 
  
 	foreach ($imagesArray as $picture) {
 		$image = new stdClass();
-		$caption = PlgFieldsImageschooseHelper::getCaption($picture, $captionType);
+		$caption = PlgFieldsImageschooseHelper::getCaption($picture);
 		$image->picture = $picture;
 		$image->picture_alt = Text::_('PLG_FIELDS_IMAGESCHOOSE_TEXT_BEFORE_ALT') . $picture;
 		$image->picture_caption_overlay = $caption;
@@ -137,9 +140,8 @@ $displayData = array(
 	'gutter'         => $gutter,
 ); ?>
 
-<div class="imageschoose_container">
 <?php echo $renderer->render($displayData); ?>
-</div>
+
 
 
 

@@ -64,7 +64,7 @@ $gutter = $gutter == 'collapse' ? ' no-gutters': ' show-grid';
 HTMLHelper::_('stylesheet', 'plg_fields_imageschoose/bs.min.css', array('version' => 'auto', 'relative' => true));
 PlgFieldsImageschooseHelper::initJs(); ?>
 
-<div class="imagechooseContainer icBs2">
+<div class="imagechooseContainer container icBs2">
 	<div class="row thumbnails<?php echo $gutter; ?>">
 		<?php include __DIR__ . '/_tmpl_base.php'; ?>
 	</div>

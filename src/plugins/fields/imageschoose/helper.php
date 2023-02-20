@@ -31,6 +31,9 @@ class PlgFieldsImageschooseHelper
 	 */
 	public static $runJs = false;
 	
+	protected static $captionType;
+	protected static $captionData;
+	
 	/**
 	 * @param   object  $imgObject
 	 *
@@ -65,21 +68,22 @@ class PlgFieldsImageschooseHelper
 	/**
 	 * @param   string          $imagesPath
 	 * @param   string|object   $image
-	 * @param   string          $captionType
 	 *
 	 * @return   object
 	 *
 	 * @since    1.0.0
 	 */
-	public static function getImgObject($imagesPath, $image, $captionType)
+	public static function getImgObject($imagesPath, $image)
 	{
 		$imgObject = new stdClass;
+		$captionType = self::$captionType;
+		$captionData = self::$captionData;
 		
 		$caption = '';
 		
 		if($captionType !== 'none')
 		{
-			$caption = self::getCaption($image->picture, $captionType);
+			$caption = self::getCaption($image->picture);
 		}
 		
 		if ($imagesPath === false)
@@ -122,14 +126,16 @@ class PlgFieldsImageschooseHelper
 		if (self::$runJs === false)
 		{
 			$js = "\nwindow.onload = function() {\n";
-			$js .= "\tbaguetteBox.run('.imageschoose_container', {\n";
+			$js .= "\tbaguetteBox.run('.imagechooseContainer', {\n";
 			$js .= "\t\tloop: true,\n";
 			$js .= "\t\tanimation: 'fadeIn',\n";
 			$js .= "\t\tnoScrollbars: true\n";
 			$js .= "\t});\n";
 			$js .= "};\n";
 			
-			JFactory::getDocument()->addScriptDeclaration($js);
+			$app = Factory::getApplication();
+			$doc = $app->getDocument();
+			$doc->addScriptDeclaration($js);
 			
 			JHtml::_('stylesheet', 'plg_fields_imageschoose/baguetteBox.min.css', array('version' => 'auto', 'relative' => true));
 			JHtml::_('script', 'plg_fields_imageschoose/baguetteBox.min.js', array('version' => 'auto', 'relative' => true));
@@ -181,7 +187,7 @@ class PlgFieldsImageschooseHelper
 		$fileSize 	  = '';
 		if(isset($exif['FileSize']))
 		{
-			$fileSize        = $exif['FileSize'];
+			$fileSize        = self::_formatFilesize($exif['FileSize']);
 		}
 		
 		$copyrightAuthor = '';
@@ -192,11 +198,22 @@ class PlgFieldsImageschooseHelper
 		
 		$fileDate        = '';
 		$fileYear        = '';
-		if(isset($exif['FileDateTime']))
+		if(isset($exif['DateTimeOriginal']))
 		{
-			$fileDate        = PlgFieldsImageschooseHelper::formatFileDate($exif['FileDateTime'], false);
-			$fileYear        = PlgFieldsImageschooseHelper::formatFileDate($exif['FileDateTime'], 'Y');
+			
+			$createdDate = new Date($exif['DateTimeOriginal']);
+			$createDateString = $createdDate->toUnix();
+			$fileDate        = PlgFieldsImageschooseHelper::formatFileDate($createDateString, false);
+			$fileYear        = PlgFieldsImageschooseHelper::formatFileDate($createDateString, 'Y');
 		}
+		else{
+			if(isset($exif['FileDateTime']))
+			{
+				$fileDate        = PlgFieldsImageschooseHelper::formatFileDate($exif['FileDateTime'], false);
+				$fileYear        = PlgFieldsImageschooseHelper::formatFileDate($exif['FileDateTime'], 'Y');
+			}
+		}
+		
 		
 		$variableNames = array(
 			'fileName'        => Text::_('PLG_FIELDS_IMAGESCHOOSE_CAPTION_LABEL_FILENAME'),
@@ -239,7 +256,7 @@ class PlgFieldsImageschooseHelper
 	
 	public static function formatFileDate($date, $format)
 	{
-		
+		$tester = $date;
 		if(!$format)
 		{
 			$language    = Factory::getApplication()->getLanguage();
@@ -273,13 +290,17 @@ class PlgFieldsImageschooseHelper
 	 *
 	 * @param   string  $image
 	 * @param   string  $captionType
+	 * @param   array   $captionData
 	 *
 	 * @return   string
 	 *
 	 * @since    1.0.0
 	 */
-	public static function getCaption($image, $captionType)
+	public static function getCaption($image)
 	{
+		$captionType = self::$captionType;
+		$captionData = self::$captionData;
+		
 		$caption = '';
 		$fileData = self::getFileData($image);
 		
@@ -288,7 +309,10 @@ class PlgFieldsImageschooseHelper
 			$caption .= '<ul class="captionList">';
 			foreach ($fileData as $key => $value)
 			{
-				$caption .= '<li><label>' . $value['label'] . ':</label> ' . $value['value'] . '</li>';
+				if(in_array($key, $captionData))
+				{
+					$caption .= '<li><label>' . $value['label'] . ':</label> ' . $value['value'] . '</li>';
+				}
 			}
 			$caption .= '</ul>';
 		}
@@ -299,4 +323,42 @@ class PlgFieldsImageschooseHelper
 		
 		return $caption;
 	}
+	
+	/**
+	 * Get Filesize
+	 *
+	 * @param   string  $image
+	 *
+	 * @return   string
+	 *
+	 * @since    1.0.0
+	 */
+	protected static function _formatFilesize($size)
+	{
+		$language    = Factory::getApplication()->getLanguage();
+		$languageTag = $language->getTag();
+		
+		$units = array('B', 'KB', 'MB', 'GB', 'TB');
+		
+		for ($i = 0; $size >= 1024 && $i < 4; $i++)
+		{
+			$size /= 1024;
+		}
+		
+		$formatter = new NumberFormatter($languageTag, NumberFormatter::DECIMAL);
+		
+		$formattedSize = $formatter->format(round($size, 2)) . ' ' . $units[$i];
+		
+		return $formattedSize;
+	}
+	
+	
+	
+	public static function helperInit($captionType, $captionData)
+	{
+		self::$captionType = $captionType;
+		self::$captionData = $captionData;
+		
+	}
+
 }
