@@ -171,7 +171,7 @@
                        class="btn-group"
                        label="PLG_FIELDS_IMAGESCHOOSE_PARAMS_CAPTION_TYPE_LABEL"
                        desc="PLG_FIELDS_IMAGESCHOOSE_PARAMS_CAPTION_TYPE_DESC"
-                       showon="caption_overlay!:none"
+                       showon="caption_overlay!:none[AND]templateFramework!:raw"
                 >
                     <option value="copyright">Copyright</option>
                     <option value="full">Full</option>
@@ -185,7 +185,7 @@
                         multiple="true"
                         layout="joomla.form.field.list-fancy-select"
                         validate="options"
-                        showon="caption_type:full"
+                        showon="caption_type:full[AND]templateFramework!:raw"
                 >
                     <option value="fileName">PLG_FIELDS_IMAGESCHOOSE_CAPTION_LABEL_FILENAME</option>
                     <option value="fileExt">PLG_FIELDS_IMAGESCHOOSE_CAPTION_LABEL_FILEEXT</option>

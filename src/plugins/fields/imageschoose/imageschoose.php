@@ -44,7 +44,7 @@ class PlgFieldsImageschoose extends FieldsPlugin
         {
 	        $wa = $app->getDocument()->getWebAssetManager();
 	        $wa->registerAndUseStyle('plg_fields_imageschoose_galleryfield', 'plg_fields_imageschoose/imageschoose.css');
-	        $wa->registerAndUseScript('plg_fields_imageschoose_galleryfield_script', 'plg_fields_imageschoose/imageschoose.min.js');
+	        $wa->registerAndUseScript('plg_fields_imageschoose_galleryfield_script', 'plg_fields_imageschoose/imageschoose.js');
         }
 
     }
